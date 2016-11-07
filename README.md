@@ -1,6 +1,6 @@
 #deeputil
 
-[![travis](https://img.shields.io/travis/mawni/deeputil/master.svg)](https://travis-ci.org/mawni/deeputil) [![npm](https://img.shields.io/npm/v/highlight-str.svg?maxAge=2592000?style=flat-square)](https://npmjs.org/package/highlight-str)
+[![travis](https://img.shields.io/travis/mawni/deeputil/master.svg)](https://travis-ci.org/mawni/deeputil) [![npm](https://img.shields.io/npm/v/deeputil.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/deeputil)
 
 `deeputil` is a tiny [node.js](https://nodejs.org) module that provides a few recursive functions for dealing with keys/values of deeply nested objects.
 
