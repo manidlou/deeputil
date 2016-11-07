@@ -4,14 +4,10 @@ function keys (obj, res) {
   res = res || []
   Object.keys(obj).forEach((k) => {
     if (typeof obj[k] === 'object') {
-      if (res.indexOf(k) === -1 && !(/^\d+$/.test(k))) {
-        res.push(k)
-      }
+      if (!(/^\d+$/.test(k)) && res.indexOf(k) === -1) res.push(k)
       res = keys(obj[k], res)
     } else {
-      if (res.indexOf(k) === -1 && !(/^\d+$/.test(k))) {
-        res.push(k)
-      }
+      if (!(/^\d+$/.test(k)) && res.indexOf(k) === -1) res.push(k)
     }
   })
   return res
@@ -21,14 +17,10 @@ function vals (obj, res) {
   res = res || []
   Object.keys(obj).forEach((k) => {
     if (typeof obj[k] === 'object') {
-      if (!(/^\d+$/.test(k))) {
-        res.push({[k]: obj[k]})
-      }
+      if (!(/^\d+$/.test(k))) res.push({[k]: obj[k]})
       res = vals(obj[k], res)
     } else {
-      if (!(/^\d+$/.test(k))) {
-        res.push({[k]: obj[k]})
-      }
+      if (!(/^\d+$/.test(k))) res.push({[k]: obj[k]})
     }
   })
   return res
