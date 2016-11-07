@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-function keys(obj, res) {
+function keys (obj, res) {
   res = res || []
   Object.keys(obj).forEach((k) => {
     if (typeof obj[k] === 'object') {
@@ -17,7 +17,7 @@ function keys(obj, res) {
   return res
 }
 
-function vals(obj, res) {
+function vals (obj, res) {
   res = res || []
   Object.keys(obj).forEach((k) => {
     if (typeof obj[k] === 'object') {
@@ -34,7 +34,7 @@ function vals(obj, res) {
   return res
 }
 
-function find(obj, key, res) {
+function find (obj, key, res) {
   res = res || []
   if (typeof key !== 'string') throw new TypeError(`'key' parameter must be of type string.`)
   Object.keys(obj).forEach((k) => {

@@ -73,8 +73,14 @@ returns an array of all the keys of the given object no matter what!
 ```javascript
 const du = require('deeputil')
 
-// get an array of all the keys
 console.log(du.keys(testobj))
+/* will return
+
+    ["rname","rid","rdata","username","email","msgs","msgid",
+     "msg","sen","time","complx","somearr","langs","js","jsobj",
+     "djsobj","ddjsobj","dddjsobj","fun","shell","shellobj",
+     "dshellobj","go","gobj","dgobj"]
+*/
 ```
 
 **deeputil.vals(obj)**
@@ -87,14 +93,9 @@ returns an array of all the key/value pairs of the given object.
 ```javascript
 const du = require('deeputil')
 
-// get an array of all the key/val pairs
 console.log(du.vals(testobj))
 /* will return
-
-    ["rname","rid","rdata","username","email","msgs","msgid",
-     "msg","sen","time","complx","somearr","langs","js","jsobj",
-     "djsobj","ddjsobj","dddjsobj","fun","shell","shellobj",
-     "dshellobj","go","gobj","dgobj"]
+  [{"rname":"gonzo"},{"rid":274},{"rdata":[{"username":"","email":"","msgs":[]},{"username":"gonzo","email":"gonzoemail","msgs":[{"msgid":19,"msg":"explore your mind","sen":"anonym","time":""}]}]},{"username":""},{"email":""},{"msgs":[]},{"username":"gonzo"},{"email":"gonzoemail"},{"msgs":[{"msgid":19,"msg":"explore your mind","sen":"anonym","time":""}]},{"msgid":19},{"msg":"explore your mind"},{"sen":"anonym"},{"time":""},{"complx":{"somearr":["wolf","octopus","epsilon"],"langs":{"js":{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},"fun":"for sure"},"shell":{"shellobj":{"dshellobj":"nice"}},"go":{"gobj":{"dgobj":["pretty","cool"]}}}}},{"somearr":["wolf","octopus","epsilon"]},{"langs":{"js":{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},"fun":"for sure"},"shell":{"shellobj":{"dshellobj":"nice"}},"go":{"gobj":{"dgobj":["pretty","cool"]}}}},{"js":{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},"fun":"for sure"}},{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}}},{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},{"ddjsobj":{"dddjsobj":"alright"}},{"dddjsobj":"alright"},{"fun":"for sure"},{"shell":{"shellobj":{"dshellobj":"nice"}}},{"shellobj":{"dshellobj":"nice"}},{"dshellobj":"nice"},{"go":{"gobj":{"dgobj":["pretty","cool"]}}},{"gobj":{"dgobj":["pretty","cool"]}},{"dgobj":["pretty","cool"]}]
 */
 ```
 
@@ -112,7 +113,7 @@ const du = require('deeputil')
 // find 'ddjsobj'
 console.log('%j', du.find(testobj, 'djsobj'))
 /* will return 
-    [{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}}]
+  [{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}}]
 */
 ```
 
@@ -122,7 +123,6 @@ const du = require('deeputil')
 // find 'dgobj'
 console.log(du.find(testobj, 'dgobj'))
 /* will return 
-    [ { dgobj: [ 'pretty', 'cool' ] } ]
+  [ { dgobj: [ 'pretty', 'cool' ] } ]
 */
 ```
-
