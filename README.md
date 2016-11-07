@@ -75,11 +75,10 @@ const du = require('deeputil')
 
 console.log(du.keys(testobj))
 /* will return
-
-    ["rname","rid","rdata","username","email","msgs","msgid",
-     "msg","sen","time","complx","somearr","langs","js","jsobj",
-     "djsobj","ddjsobj","dddjsobj","fun","shell","shellobj",
-     "dshellobj","go","gobj","dgobj"]
+	["rname","rid","rdata","username","email","msgs","msgid",
+   "msg","sen","time","complx","somearr","langs","js","jsobj",
+   "djsobj","ddjsobj","dddjsobj","fun","shell","shellobj",
+   "dshellobj","go","gobj","dgobj"]
 */
 ```
 
@@ -94,14 +93,11 @@ returns an array of all the key/value pairs of the given object.
 const du = require('deeputil')
 
 console.log(du.vals(testobj))
-/* will return
-  [{"rname":"gonzo"},{"rid":274},{"rdata":[{"username":"","email":"","msgs":[]},{"username":"gonzo","email":"gonzoemail","msgs":[{"msgid":19,"msg":"explore your mind","sen":"anonym","time":""}]}]},{"username":""},{"email":""},{"msgs":[]},{"username":"gonzo"},{"email":"gonzoemail"},{"msgs":[{"msgid":19,"msg":"explore your mind","sen":"anonym","time":""}]},{"msgid":19},{"msg":"explore your mind"},{"sen":"anonym"},{"time":""},{"complx":{"somearr":["wolf","octopus","epsilon"],"langs":{"js":{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},"fun":"for sure"},"shell":{"shellobj":{"dshellobj":"nice"}},"go":{"gobj":{"dgobj":["pretty","cool"]}}}}},{"somearr":["wolf","octopus","epsilon"]},{"langs":{"js":{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},"fun":"for sure"},"shell":{"shellobj":{"dshellobj":"nice"}},"go":{"gobj":{"dgobj":["pretty","cool"]}}}},{"js":{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},"fun":"for sure"}},{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}}},{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},{"ddjsobj":{"dddjsobj":"alright"}},{"dddjsobj":"alright"},{"fun":"for sure"},{"shell":{"shellobj":{"dshellobj":"nice"}}},{"shellobj":{"dshellobj":"nice"}},{"dshellobj":"nice"},{"go":{"gobj":{"dgobj":["pretty","cool"]}}},{"gobj":{"dgobj":["pretty","cool"]}},{"dgobj":["pretty","cool"]}]
-*/
 ```
 
 **deeputil.find(obj, key)**
 
- * `obj` `{Object}`
+ * `obj` `{Object}` object to find items in
  * `key` `{String}` the key to find
  * `@return` `{Array<Object>}`
 
@@ -124,5 +120,15 @@ const du = require('deeputil')
 console.log(du.find(testobj, 'dgobj'))
 /* will return 
   [ { dgobj: [ 'pretty', 'cool' ] } ]
+*/
+```
+
+```javascript
+const du = require('deeputil')
+
+// find 'username'
+console.log(du.find(testobj, 'username'))
+/* will return 
+  [ { username: '' }, { username: 'gonzo' } ]
 */
 ```
