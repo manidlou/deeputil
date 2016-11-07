@@ -1,6 +1,6 @@
 {
   "name": "deeputil",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tiny recursive utility to deal with keys/values of deeply nested objects",
   "main": "deeputil.js",
   "scripts": {
