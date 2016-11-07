@@ -10,7 +10,7 @@
 
 ###docs
 
-*a dummy object for use in examples*
+*a dummy object for use in examples below*
 
 ```javascript
 var testobj = {
@@ -66,36 +66,43 @@ var testobj = {
 **deeputil.keys(obj)**
 
  * `obj` `{Object}`
- * `@return` `{Array<String>}
+ * `@return` `{Array<String>}`
 
 returns an array of all the keys of the given object no matter what!
 
 ```javascript
 const du = require('deeputil')
 
-// get all the keys
+// get an array of all the keys
 console.log(du.keys(testobj))
 ```
 
 **deeputil.vals(obj)**
 
  * `obj` `{Object}`
- * `@return` `{Array<Object>}
+ * `@return` `{Array<Object>}`
 
 returns an array of all the key/value pairs of the given object.
 
 ```javascript
 const du = require('deeputil')
 
-// get all the key/val pairs
+// get an array of all the key/val pairs
 console.log(du.vals(testobj))
+/* will return
+
+    ["rname","rid","rdata","username","email","msgs","msgid",
+     "msg","sen","time","complx","somearr","langs","js","jsobj",
+     "djsobj","ddjsobj","dddjsobj","fun","shell","shellobj",
+     "dshellobj","go","gobj","dgobj"]
+*/
 ```
 
 **deeputil.find(obj, key)**
 
  * `obj` `{Object}`
- * `key` `{String}` the key to find in the given obj
- * `@return` `{Array<Object>}
+ * `key` `{String}` the key to find
+ * `@return` `{Array<Object>}`
 
 returns an array of results if any, otherwise returns an empty array. If more than one item with the same key found (like in an array), the result array contains all of them.
 
@@ -104,15 +111,18 @@ const du = require('deeputil')
 
 // find 'ddjsobj'
 console.log('%j', du.find(testobj, 'djsobj'))
-
-// will return [{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}}]
+/* will return 
+    [{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}}]
+*/
 ```
 
 ```javascript
 const du = require('deeputil')
 
 // find 'dgobj'
-// will return [ { dgobj: [ 'pretty', 'cool' ] } ]
 console.log(du.find(testobj, 'dgobj'))
+/* will return 
+    [ { dgobj: [ 'pretty', 'cool' ] } ]
+*/
 ```
 
