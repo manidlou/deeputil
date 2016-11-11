@@ -45,18 +45,27 @@ function key (obj) {
   return Object.keys(obj)[0]
 }
 
-function strm (obj) {
-  var rs = new stream.Readable({objectMode: true})
-  vals(obj).forEach((i) => {
-    if (i !== null) {
-      var dat = {key: key(obj), val: obj[key(obj)]}
-      rs.push(dat)
-    } else {
-      rs.emit('error', new Error('null object'))
+function Rstream (obj) {
+  const Rstrm = new stream.Readable({
+    objectMode: true,
+    read: function () {
+      vals(obj).forEach((i) => {
+        if (i === null) {
+          process.nextTick(() => this.emit('error', new Error('null object')))
+          return
+        } else {
+          var dat = {key: key(i), val: i[key(i)]}
+          this.push(dat)
+        }
+      })
+      this.push(null)
     }
   })
-  rs.push(null)
-  return rs
+  return Rstrm
+}
+
+function strm (obj) {
+  return new Rstream(obj)
 }
 
 module.exports = {
