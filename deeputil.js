@@ -1,4 +1,5 @@
 'use strict'
+const stream = require('stream')
 
 function keys (obj, res) {
   res = res || []
@@ -40,8 +41,28 @@ function find (obj, key, res) {
   return res
 }
 
+function key (obj) {
+  return Object.keys(obj)[0]
+}
+
+function strm (obj) {
+  var rs = new stream.Readable({objectMode: true})
+  vals(obj).forEach((i) => {
+    if (i !== null) {
+      var dat = {key: key(obj), val: obj[key(obj)]}
+      rs.push(dat)
+    } else {
+      rs.emit('error', new Error('null object'))
+    }
+  })
+  rs.push(null)
+  return rs
+}
+
 module.exports = {
   keys: keys,
   vals: vals,
-  find: find
+  find: find,
+  key: key,
+  stream: strm
 }

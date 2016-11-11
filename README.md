@@ -2,6 +2,8 @@
 
 [![travis](https://img.shields.io/travis/mawni/deeputil/master.svg)](https://travis-ci.org/mawni/deeputil) [![npm](https://img.shields.io/npm/v/deeputil.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/deeputil)
 
+<a href="https://github.com/feross/standard"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100"></a>
+
 `deeputil` is a tiny [node.js](https://nodejs.org) module that provides a few recursive functions for dealing with keys/values of deeply nested objects.
 
 ###install
@@ -63,7 +65,7 @@ var testobj = {
 }
 ```
 
-**deeputil.keys(obj)**
+**deeputil.keys(object)**
 
  * `obj` `{Object}`
  * `@return` `{Array<String>}`
@@ -75,14 +77,14 @@ const du = require('deeputil')
 
 console.log(du.keys(testobj))
 /* will return
-	["rname","rid","rdata","username","email","msgs","msgid",
+  ["rname","rid","rdata","username","email","msgs","msgid",
    "msg","sen","time","complx","somearr","langs","js","jsobj",
    "djsobj","ddjsobj","dddjsobj","fun","shell","shellobj",
    "dshellobj","go","gobj","dgobj"]
 */
 ```
 
-**deeputil.vals(obj)**
+**deeputil.vals(object)**
 
  * `obj` `{Object}`
  * `@return` `{Array<Object>}`
@@ -95,7 +97,7 @@ const du = require('deeputil')
 console.log(du.vals(testobj))
 ```
 
-**deeputil.find(obj, key)**
+**deeputil.find(object, key)**
 
  * `obj` `{Object}` object to find items in
  * `key` `{String}` the key to find
@@ -131,4 +133,38 @@ console.log(du.find(testobj, 'username'))
 /* will return 
   [ { username: '' }, { username: 'gonzo' } ]
 */
+```
+
+**deeputil.key(object)**
+
+ * `object` `{Object}`
+ * `@return` `{String}` the property name of `object`
+
+
+```javascript
+const du = require('deeputil')
+
+var someobj = {username: 'foo'}
+console.log(du.key(someobj))
+// will return 'username'
+```
+
+**deeputil.stream(object)**
+
+ * `obj` `{Object}`
+ * `@return` `{[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable)}` a readable stream
+
+streams all key/value pairs of `object`
+
+```javascript
+const du = require('deeputil')
+
+du.stream(testobj).on('error', (err) => {
+  console.error(err)
+}).on('data', (dat) => {
+  console.log('key:', dat.key)  
+  console.log('value:', dat.val)  
+}).on('end', () => {
+  console.log('finished successfully.')  
+})
 ```

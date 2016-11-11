@@ -86,3 +86,36 @@ describe(`+ find() if invalid key parameter is passed`, () => {
     done()
   })
 })
+
+describe(`+ key()`, () => {
+  it('should return the property name of the given object', (done) => {
+    var o = {name: 'foo'}
+    var o1 = {colors: ['gray', 'blue']}
+    assert.strictEqual(du.key(o), 'name')
+    assert.strictEqual(du.key(o1), 'colors')
+    done()
+  })
+})
+
+describe(`+ stream()`, () => {
+  it('should stream all key/val pairs', (done) => {
+    var itemFromObj_shell = {
+      "shellobj": {
+        "dshellobj": "nice"
+      }
+    }
+    var itemFromObj_dgobj = ["pretty", "cool"]
+
+    du.stream(testobj).on('error', (err) => {
+      assert.ifError(err)
+    }).on('data', (dat) => {
+      assert.equal(typeof dat, 'object')
+      if (dat.key === 'shell')
+        assert.deepStrictEqual(dat.val, itemFromObj_shell)
+      if (dat.key === 'dgobj') {
+        assert.deepStrictEqual(dat.val, itemFromObj_dgobj)
+      }
+    })  
+    done()
+  })
+})

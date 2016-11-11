@@ -4,7 +4,7 @@
   "description": "tiny recursive utility to deal with keys/values of deeply nested objects",
   "main": "deeputil.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec test/"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
