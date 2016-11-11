@@ -152,7 +152,7 @@ console.log(du.key(someobj))
 **deeputil.stream(object)**
 
  * `obj` `{Object}`
- * `@return` `{[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable)}` a readable stream
+ * `@return` {[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable)} a readable stream
 
 streams all key/value pairs of `object`
 
