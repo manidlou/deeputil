@@ -153,6 +153,8 @@ console.log(du.key(someobj))
  * `obj` `{Object}`
  * `@return` {[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable)} a readable stream
 
+  * `data` `{Object}` `{key:'', val:''}`
+
 streams all key/value pairs of `obj`
 
 ```javascript
