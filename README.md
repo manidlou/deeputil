@@ -65,12 +65,12 @@ var testobj = {
 }
 ```
 
-**deeputil.keys(object)**
+**deeputil.keys(obj)**
 
  * `obj` `{Object}`
  * `@return` `{Array<String>}`
 
-returns an array of all the keys of the given object no matter what!
+returns an array of all the keys of `obj` no matter how deeply nested!
 
 ```javascript
 const du = require('deeputil')
@@ -84,12 +84,12 @@ console.log(du.keys(testobj))
 */
 ```
 
-**deeputil.vals(object)**
+**deeputil.vals(obj)**
 
  * `obj` `{Object}`
  * `@return` `{Array<Object>}`
 
-returns an array of all the key/value pairs of the given object.
+returns an array of all the key/value pairs of `obj`.
 
 ```javascript
 const du = require('deeputil')
@@ -97,7 +97,7 @@ const du = require('deeputil')
 console.log(du.vals(testobj))
 ```
 
-**deeputil.find(object, key)**
+**deeputil.find(obj, key)**
 
  * `obj` `{Object}` object to find items in
  * `key` `{String}` the key to find
@@ -135,11 +135,10 @@ console.log(du.find(testobj, 'username'))
 */
 ```
 
-**deeputil.key(object)**
+**deeputil.key(obj)**
 
- * `object` `{Object}`
- * `@return` `{String}` the property name of `object`
-
+ * `obj` `{Object}`
+ * `@return` `{String}` the property name of `obj`
 
 ```javascript
 const du = require('deeputil')
@@ -149,12 +148,12 @@ console.log(du.key(someobj))
 // will return 'username'
 ```
 
-**deeputil.stream(object)**
+**deeputil.stream(obj)**
 
  * `obj` `{Object}`
  * `@return` {[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable)} a readable stream
 
-streams all key/value pairs of `object`
+streams all key/value pairs of `obj`
 
 ```javascript
 const du = require('deeputil')
