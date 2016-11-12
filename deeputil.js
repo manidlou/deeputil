@@ -27,22 +27,21 @@ function vals (obj, res) {
   return res
 }
 
-function find (obj, key, res) {
-  res = res || []
-  if (typeof key !== 'string') throw new TypeError(`'key' parameter must be of type string.`)
-  Object.keys(obj).forEach((k) => {
-    if (typeof obj[k] === 'object') {
-      if (!(/^\d+$/.test(k)) && (k === key)) res.push({[k]: obj[k]})
-      res = find(obj[k], key, res)
-    } else {
-      if (!(/^\d+$/.test(k)) && (k === key)) res.push({[k]: obj[k]})
-    }
-  })
-  return res
-}
-
 function key (obj) {
   return Object.keys(obj)[0]
+}
+
+function find (obj, keyterm, res) {
+  res = res || []
+  if (typeof keyterm !== 'string') throw new TypeError(`'key' parameter must be of type string.`)
+  vals(obj).forEach((i) => {
+    if (key(i) === keyterm) res.push(i[key(i)])
+  })
+  if (res.length === 1) {
+    return res[0]
+  } else {
+    return res
+  }
 }
 
 class Rstream extends Readable {

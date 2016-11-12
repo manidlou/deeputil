@@ -22,7 +22,7 @@ const du = require('deeputil')
 
 var someobj = {username: 'foo'}
 console.log(du.key(someobj))
-// will return 'username'
+// result -> 'username'
 ```
 
 **deeputil.keys(obj)**
@@ -36,9 +36,8 @@ returns an array of all the keys of `obj` no matter how deeply nested!
 const du = require('deeputil')
 
 var someobj = {
-  ...  
+  ...
 }
-
 console.dir(du.keys(someobj))
 ```
 
@@ -53,9 +52,8 @@ returns an array of all the key/value pairs of `obj`.
 const du = require('deeputil')
 
 var someobj = {
-  ...  
+  ...
 }
-
 console.dir(du.vals(someobj))
 ```
 
@@ -72,27 +70,27 @@ streams all key/value pairs of `obj`
 const du = require('deeputil')
 
 var someobj = {
-  ...  
+  ...
 }
 
 du.stream(someobj).on('error', (err) => {
   console.error(err)
 }).on('data', (dat) => {
-  console.log('key:', dat.key)  
-  console.log('value:', dat.val)  
+  console.log('key:', dat.key)
+  console.log('value:', dat.val)
 }).on('end', () => {
-  console.log('finished successfully.')  
+  console.log('finished successfully.')
 })
 ```
 
 **deeputil.find(obj, key)**
 
- * `obj` `{Object}` object to find items in
- * `key` `{String}` the key to find
- * `@return` `{Object | Array<Object>}`
+ * `obj` `{Object}`
+ * `key` `{String}` the key to find its corresponding value
+ * `@return` `{typeof found value | Array<typeof found value>}`
 
-  * if only one item found, returns an object
-  * if more than one item with the same key found (like in an array), returns an array of objects
+  * if only one item found, returns the found value
+  * if more than one item with the same key found (like in an array), returns an array of found values
 
 ```javascript
 const du = require('deeputil')
@@ -102,15 +100,21 @@ var someobj = {
   baz: {
     qux: {
       garply: 'waldo',
-      quux: ['corge', 'grault']  
+      quux: ['corge', 'grault']
     }
   }
 }
 
+console.log(du.find(someobj, 'qux'))
+// result -> { garply: 'waldo', quux: [ 'corge', 'grault' ] }
+
+console.log(du.find(someobj, 'garply'))
+// result -> waldo
+
 console.log(du.find(someobj, 'quux'))
-// result -> { quux: [ 'corge', 'grault' ] }
+// result -> [ 'corge', 'grault' ]
 
 console.log(du.find(someobj, 'username'))
-// result -> [ { username: 'plugh' }, { username: 'thud' } ]
+// result -> [ 'plugh', 'thud' ]
 ```
 
