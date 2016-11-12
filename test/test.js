@@ -55,6 +55,10 @@ const allkeys = ["rname","rid","rdata","username","email","msgs","msgid","msg","
 const allvals = [{"rname":"gonzo"},{"rid":274},{"rdata":[{"username":"waldo","email":"","msgs":[]},{"username":"gonzo","email":"gonzoemail","msgs":[{"msgid":19,"msg":"explore your mind","sen":"anonym","time":""}]}]},{"username":"waldo"},{"email":""},{"msgs":[]},{"username":"gonzo"},{"email":"gonzoemail"},{"msgs":[{"msgid":19,"msg":"explore your mind","sen":"anonym","time":""}]},{"msgid":19},{"msg":"explore your mind"},{"sen":"anonym"},{"time":""},{"complx":{"somearr":["wolf","octopus","epsilon"],"langs":{"js":{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},"fun":"for sure"},"shell":{"shellobj":{"dshellobj":"nice"}},"go":{"gobj":{"dgobj":["pretty","cool"]}}}}},{"somearr":["wolf","octopus","epsilon"]},{"langs":{"js":{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},"fun":"for sure"},"shell":{"shellobj":{"dshellobj":"nice"}},"go":{"gobj":{"dgobj":["pretty","cool"]}}}},{"js":{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},"fun":"for sure"}},{"jsobj":{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}}},{"djsobj":{"ddjsobj":{"dddjsobj":"alright"}}},{"ddjsobj":{"dddjsobj":"alright"}},{"dddjsobj":"alright"},{"fun":"for sure"},{"shell":{"shellobj":{"dshellobj":"nice"}}},{"shellobj":{"dshellobj":"nice"}},{"dshellobj":"nice"},{"go":{"gobj":{"dgobj":["pretty","cool"]}}},{"gobj":{"dgobj":["pretty","cool"]}},{"dgobj":["pretty","cool"]}]
 
 describe(`+ keys()`, () => {
+  it('should throw a TypeError if the parameter is not of type object', (done) => {
+    assert.throws(() => {du.keys('invalid param')}, TypeError)
+    done()
+  })
   it('should return an array of all the keys', (done) => {
     assert.deepStrictEqual(du.keys(testobj), allkeys)
     done()
@@ -62,6 +66,10 @@ describe(`+ keys()`, () => {
 })
 
 describe(`+ vals()`, () => {
+  it('should throw a TypeError if the parameter is not of type object', (done) => {
+    assert.throws(() => {du.vals('invalid param')}, TypeError)
+    done()
+  })
   it('should return an array of all the key/val pairs', (done) => {
     assert.deepStrictEqual(du.vals(testobj), allvals)
     done()
@@ -69,15 +77,21 @@ describe(`+ vals()`, () => {
 })
 
 describe(`+ find() based on the given key`, () => {
+  it('should throw a TypeError if a given obj is not of type object', (done) => {
+    assert.throws(() => {du.find('invalid param', 'somekey')}, TypeError)
+    done()
+  })
+  it('should throw a TypeError if a given key is not of type string', (done) => {
+    assert.throws(() => {du.find(testobj, {key: 'go'})}, TypeError)
+    done()
+  })
   it('should return the value if only one found', (done) => {
     const go_res = {"gobj":{"dgobj":["pretty","cool"]}}
-    //const gores = { gobj: { dgobj: [ 'pretty', 'cool' ] } }
     assert.deepStrictEqual(du.find(testobj, 'go'), go_res)
     done()
   })
   it('should return an array of values if more than one found', (done) => {
     const username_res = ["waldo","gonzo"]
-    //const gores = { gobj: { dgobj: [ 'pretty', 'cool' ] } }
     assert.deepStrictEqual(du.find(testobj, 'username'), username_res)
     done()
   })
@@ -87,14 +101,11 @@ describe(`+ find() based on the given key`, () => {
   })
 })
 
-describe(`+ find() if invalid key parameter is passed`, () => {
-  it('should throw an error if the key parameter is not of type string', (done) => {
-    assert.throws(() => {du.find(testobj, {key: 'go'})}, TypeError)
+describe(`+ key()`, () => {
+  it('should throw a TypeError if the parameter is not of type object', (done) => {
+    assert.throws(() => {du.key('invalid param')}, TypeError)
     done()
   })
-})
-
-describe(`+ key()`, () => {
   it('should return the property name of the given object', (done) => {
     var o = {name: 'foo'}
     var o1 = {colors: ['gray', 'blue']}
@@ -105,6 +116,10 @@ describe(`+ key()`, () => {
 })
 
 describe(`+ stream()`, () => {
+  it('should throw a TypeError if the parameter is not of type object', (done) => {
+    assert.throws(() => {du.stream('invalid param')}, TypeError)
+    done()
+  })
   it('should stream all key/val pairs', (done) => {
     var itemFromObj_shell = {
       "shellobj": {

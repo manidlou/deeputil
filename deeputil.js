@@ -2,6 +2,7 @@
 const Readable = require('stream').Readable
 
 function keys (obj, res) {
+  if (typeof obj !== 'object') throw new TypeError(`'obj' parameter must be of type object.`)
   res = res || []
   Object.keys(obj).forEach((k) => {
     if (typeof obj[k] === 'object') {
@@ -15,6 +16,7 @@ function keys (obj, res) {
 }
 
 function vals (obj, res) {
+  if (typeof obj !== 'object') throw new TypeError(`'obj' parameter must be of type object.`)
   res = res || []
   Object.keys(obj).forEach((k) => {
     if (typeof obj[k] === 'object') {
@@ -28,12 +30,14 @@ function vals (obj, res) {
 }
 
 function key (obj) {
+  if (typeof obj !== 'object') throw new TypeError(`'obj' parameter must be of type object.`)
   return Object.keys(obj)[0]
 }
 
 function find (obj, keyterm, res) {
-  res = res || []
+  if (typeof obj !== 'object') throw new TypeError(`'obj' parameter must be of type object.`)
   if (typeof keyterm !== 'string') throw new TypeError(`'key' parameter must be of type string.`)
+  res = res || []
   vals(obj).forEach((i) => {
     if (key(i) === keyterm) res.push(i[key(i)])
   })
