@@ -70,7 +70,7 @@ class Rstream extends Readable {
   }
 }
 
-function createRstream (obj) {
+function readStream (obj) {
   return new Rstream({obj: obj})
 }
 
@@ -79,5 +79,5 @@ module.exports = {
   vals: vals,
   find: find,
   key: key,
-  stream: createRstream
+  readStream: readStream
 }

@@ -115,7 +115,7 @@ describe(`+ key()`, () => {
   })
 })
 
-describe(`+ stream()`, () => {
+describe(`+ readStream()`, () => {
   it('should throw a TypeError if the parameter is not of type object', (done) => {
     assert.throws(() => {du.stream('invalid param')}, TypeError)
     done()
@@ -128,7 +128,7 @@ describe(`+ stream()`, () => {
     }
     var itemFromObj_dgobj = ["pretty", "cool"]
 
-    du.stream(testobj).on('error', (err) => {
+    du.readStream(testobj).on('error', (err) => {
       assert.ifError(err)
     }).on('data', (dat) => {
       assert.equal(typeof dat, 'object')

@@ -57,7 +57,7 @@ var someobj = {
 console.dir(du.vals(someobj))
 ```
 
-**deeputil.stream(obj)**
+**deeputil.readStream(obj)**
 
  * `obj` `{Object}`
  * `@return` {[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable)} a readable stream
@@ -73,7 +73,7 @@ var someobj = {
   ...
 }
 
-du.stream(someobj).on('error', (err) => {
+du.readStream(someobj).on('error', (err) => {
   console.error(err)
 }).on('data', (dat) => {
   console.log('key:', dat.key)
