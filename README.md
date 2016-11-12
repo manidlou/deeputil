@@ -34,7 +34,7 @@ returns an array of all the keys of `obj` no matter how deeply nested!
 
 ```javascript
 const du = require('deeputil')
-console.log(du.keys(testobj))
+console.dir(du.keys(testobj))
 ```
 
 **deeputil.vals(obj)**
@@ -46,7 +46,7 @@ returns an array of all the key/value pairs of `obj`.
 
 ```javascript
 const du = require('deeputil')
-console.log(du.vals(testobj))
+console.dir(du.vals(testobj))
 ```
 
 **deeputil.stream(obj)**
@@ -78,13 +78,13 @@ du.stream(testobj).on('error', (err) => {
  * `@return` `{Object | Array<Object>}`
 
   * if only one item found, returns an object
-  * if more than one item with the same key found, returns an array of objects
+  * if more than one item with the same key found (like in an array), returns an array of objects
 
 ```javascript
 const du = require('deeputil')
 
 var someobj = {
-  data: [{username:'plugh', id: 17}, {username: thud, id: 92}],
+  data: [{username:'plugh', id: 17}, {username: 'thud', id: 92}],
   baz: {
     qux: {
       garply: 'waldo',
@@ -92,6 +92,7 @@ var someobj = {
     }
   }
 }
+
 console.log(du.find(someobj, 'quux'))
 // result -> { quux: [ 'corge', 'grault' ] }
 
