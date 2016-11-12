@@ -49,7 +49,7 @@ class Rstream extends Readable {
   constructor (opt) {
     super(opt)
     if (typeof opt.obj !== 'object') throw new TypeError(`'obj' parameter must be of type object.`)
-    this.objectMode = true
+    this.opt = opt
     this._obj = opt.obj
   }
   _read () {
@@ -67,7 +67,7 @@ class Rstream extends Readable {
 }
 
 function createRstream (obj) {
-  return new Rstream({obj: obj})
+  return new Rstream({obj: obj, objectMode: true})
 }
 
 module.exports = {
