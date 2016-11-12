@@ -34,7 +34,12 @@ returns an array of all the keys of `obj` no matter how deeply nested!
 
 ```javascript
 const du = require('deeputil')
-console.dir(du.keys(testobj))
+
+var someobj = {
+  ...  
+}
+
+console.dir(du.keys(someobj))
 ```
 
 **deeputil.vals(obj)**
@@ -46,7 +51,12 @@ returns an array of all the key/value pairs of `obj`.
 
 ```javascript
 const du = require('deeputil')
-console.dir(du.vals(testobj))
+
+var someobj = {
+  ...  
+}
+
+console.dir(du.vals(someobj))
 ```
 
 **deeputil.stream(obj)**
@@ -54,14 +64,18 @@ console.dir(du.vals(testobj))
  * `obj` `{Object}`
  * `@return` {[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable)} a readable stream
 
-  * `data` `{Object}` `{key:'', val:''}`
+  * `data` `{Object}` `{key:'', val: }`
 
 streams all key/value pairs of `obj`
 
 ```javascript
 const du = require('deeputil')
 
-du.stream(testobj).on('error', (err) => {
+var someobj = {
+  ...  
+}
+
+du.stream(someobj).on('error', (err) => {
   console.error(err)
 }).on('data', (dat) => {
   console.log('key:', dat.key)  
