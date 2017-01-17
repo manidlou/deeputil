@@ -1,8 +1,6 @@
 #deeputil
 
-[![travis](https://img.shields.io/travis/mawni/deeputil/master.svg)](https://travis-ci.org/mawni/deeputil) [![npm](https://img.shields.io/npm/v/deeputil.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/deeputil)
-
-<a href="https://github.com/feross/standard"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100"></a>
+[![travis build](https://travis-ci.org/manidlou/deeputil.svg?branch=master)](https://travis-ci.org/manidlou/deeputil) [![npm](https://img.shields.io/npm/v/deeputil.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/deeputil)
 
 `deeputil` is a tiny [node.js](https://nodejs.org) module that provides a few recursive functions for dealing with keys/values of deeply nested objects.
 
@@ -117,4 +115,3 @@ console.log(du.find(someobj, 'quux'))
 console.log(du.find(someobj, 'username'))
 // result -> [ 'plugh', 'thud' ]
 ```
-
