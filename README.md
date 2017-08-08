@@ -1,14 +1,14 @@
-#deeputil
+# deeputil
 
 [![travis build](https://travis-ci.org/manidlou/deeputil.svg?branch=master)](https://travis-ci.org/manidlou/deeputil) [![npm](https://img.shields.io/npm/v/deeputil.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/deeputil)
 
 `deeputil` is a tiny [node.js](https://nodejs.org) module that provides a few recursive functions for dealing with keys/values of deeply nested objects.
 
-###Install
+### Install
 
 `npm i deeputil`
 
-###Docs
+### API
 
 **deeputil.key(obj)**
 
